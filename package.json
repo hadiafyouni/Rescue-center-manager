@@ -1,0 +1,21 @@
+{
+  "name": "emergency-dispatch-system",
+  "version": "1.0.0",
+  "description": "Nationwide Emergency Dispatch System (Localhost Prototype)",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "infra:up": "docker compose up -d",
+    "infra:down": "docker compose down",
+    "infra:logs": "docker compose logs -f",
+    "osrm:prepare": "powershell -ExecutionPolicy Bypass -File ./infra/osrm/prepare.ps1",
+    "setup": "node -e \"const fs=require('fs'); if(!fs.existsSync('.env')){fs.copyFileSync('.env.example','.env');console.log('.env created from .env.example')}else{console.log('.env already exists')}\"",
+    "dev": "concurrently \"npm run dev --workspace=packages/backend\" \"npm run dev --workspace=packages/frontend\"",
+    "seed": "npm run seed --workspace=packages/backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

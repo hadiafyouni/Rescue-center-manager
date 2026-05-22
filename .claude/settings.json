@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(docker exec dispatch_postgres pg_isready -U dispatch 2>&1)",
+      "PowerShell(Invoke-RestMethod -Uri \"http://localhost:3001/health\" 2>&1)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3001/health\" -UseBasicParsing 2>&1)",
+      "PowerShell(curl.exe -s http://localhost:3001/health 2>&1)",
+      "PowerShell(curl.exe -s -X POST http://localhost:3001/incidents -H \"Content-Type: application/json\" -d \"{\\\\\"description\\\\\":\\\\\"Test fire\\\\\",\\\\\"victimCount\\\\\":2,\\\\\"location\\\\\":{\\\\\"lon\\\\\":35.5,\\\\\"lat\\\\\":33.88}}\" 2>&1)",
+      "PowerShell(netstat -ano)",
+      "PowerShell(Get-Process -Id 1944, 7092 | Select-Object Id, ProcessName, CommandLine 2>&1; \\(Get-CimInstance Win32_Process -Filter \"ProcessId=1944\"\\).CommandLine; \\(Get-CimInstance Win32_Process -Filter \"ProcessId=7092\"\\).CommandLine)"
+    ]
+  }
+}
