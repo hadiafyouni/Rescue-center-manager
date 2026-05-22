@@ -5,7 +5,7 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState({ totalIncidents: 0, activeUnits: 0, availableIcuBeds: 0 });
 
   useEffect(() => {
-    fetch('http://localhost:3001/admin/stats')
+    fetch('http://localhost:3002/admin/stats')
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(console.error);

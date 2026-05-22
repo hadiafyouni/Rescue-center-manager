@@ -19,6 +19,17 @@ const fastify = Fastify({
 
 fastify.register(fastifyWebsocket);
 
+fastify.addHook('onRequest', (request, reply, done) => {
+  reply.header('Access-Control-Allow-Origin', '*');
+  reply.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  reply.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (request.method === 'OPTIONS') {
+    reply.status(204).send();
+    return;
+  }
+  done();
+});
+
 fastify.get('/health', async () => {
   let pgStatus = 'down';
   let redisStatus = 'down';

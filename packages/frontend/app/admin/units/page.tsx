@@ -5,7 +5,7 @@ export default function AdminUnitsPage() {
   const [units, setUnits] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/admin/units')
+    fetch('http://localhost:3002/admin/units')
       .then(res => res.json())
       .then(data => setUnits(data))
       .catch(console.error);

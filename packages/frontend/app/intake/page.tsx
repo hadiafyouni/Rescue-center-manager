@@ -14,7 +14,7 @@ export default function IntakePage() {
     const mockLocation = { lon: 35.5 + Math.random() * 0.1 - 0.05, lat: 33.88 + Math.random() * 0.1 - 0.05 };
     
     try {
-      const res = await fetch('http://localhost:3001/incidents', {
+      const res = await fetch('http://localhost:3002/incidents', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ description, victimCount, location: mockLocation })

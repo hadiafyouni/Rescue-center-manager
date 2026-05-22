@@ -20,8 +20,8 @@ export async function incidentRoutes(fastify: FastifyInstance) {
       await client.query('BEGIN');
       
       const res = await client.query(`
-        INSERT INTO incidents (description, location, victim_count, state)
-        VALUES ($1, ST_SetSRID(ST_MakePoint($2, $3), 4326), $4, 'received')
+        INSERT INTO incidents (description, location, victim_count, state, severity)
+        VALUES ($1, ST_SetSRID(ST_MakePoint($2, $3), 4326), $4, 'received', 'unknown')
         RETURNING id
       `, [description, location.lon, location.lat, victimCount]);
       

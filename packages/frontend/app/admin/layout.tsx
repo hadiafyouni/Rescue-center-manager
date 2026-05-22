@@ -1,7 +1,7 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
-import { LayoutDashboard, Ambulance, Hospital, Users, Activity } from 'lucide-react';
+import { LayoutDashboard, Ambulance, Building2, Users, Activity } from 'lucide-react';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -9,7 +9,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   const links = [
     { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
     { name: 'Units Fleet', href: '/admin/units', icon: Ambulance },
-    { name: 'Hospitals', href: '/admin/hospitals', icon: Hospital },
+    { name: 'Hospitals', href: '/admin/hospitals', icon: Building2 },
     { name: 'Users', href: '/admin/users', icon: Users },
     { name: 'System Logs', href: '/console/audit', icon: Activity },
   ];

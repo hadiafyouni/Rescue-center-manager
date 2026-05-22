@@ -5,7 +5,7 @@ export default function AdminHospitalsPage() {
   const [hospitals, setHospitals] = useState<any[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/admin/hospitals')
+    fetch('http://localhost:3002/admin/hospitals')
       .then(res => res.json())
       .then(data => setHospitals(data))
       .catch(console.error);

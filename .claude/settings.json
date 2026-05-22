@@ -15,7 +15,13 @@
       "PowerShell(Get-Process -Id 1944)",
       "PowerShell(Get-NetTCPConnection -LocalPort 3001 -State Listen 2>&1)",
       "PowerShell(\\(Get-CimInstance Win32_Process -Filter \"ProcessId=25344\"\\).CommandLine)",
-      "PowerShell(curl.exe -s -X POST http://localhost:3001/incidents -H \"Content-Type: application/json\" -d \"{\\\\\"description\\\\\":\\\\\"fire\\\\\",\\\\\"victimCount\\\\\":1,\\\\\"location\\\\\":{\\\\\"lon\\\\\":35.5,\\\\\"lat\\\\\":33.88}}\" 2>&1)"
+      "PowerShell(curl.exe -s -X POST http://localhost:3001/incidents -H \"Content-Type: application/json\" -d \"{\\\\\"description\\\\\":\\\\\"fire\\\\\",\\\\\"victimCount\\\\\":1,\\\\\"location\\\\\":{\\\\\"lon\\\\\":35.5,\\\\\"lat\\\\\":33.88}}\" 2>&1)",
+      "PowerShell(Get-Process -Id 25344)",
+      "PowerShell(Get-Process node)",
+      "PowerShell(curl.exe -s http://localhost:3001/incidents 2>&1)",
+      "PowerShell(Stop-Process -Id 25344 -Force -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq 7092 -or $_.ProcessId -eq 7092 } | Select-Object ProcessId, ParentProcessId, Name, CommandLine | Format-List)",
+      "PowerShell(Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq 13848 } | Select-Object ProcessId, ParentProcessId, Name, CommandLine | Format-List)"
     ]
   }
 }
