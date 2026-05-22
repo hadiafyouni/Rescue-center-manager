@@ -14,7 +14,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <div className="nav-brand">🚨 Lebanon Emergency Dispatch</div>
           <div className="nav-links">
             <a href="/intake">Citizen Intake</a>
-            <a href="/console">Dispatcher Console</a>
+            <a href="/console">Console</a>
+            <a href="/admin" style={{ color: 'var(--accent-blue)', fontWeight: 600 }}>Admin Portal</a>
           </div>
         </nav>
         <main>{children}</main>

@@ -5,6 +5,7 @@ import path from 'path';
 import { connectRedis, redisPublisher } from './realtime/pubsub';
 import { setupWebSockets } from './realtime/ws';
 import { incidentRoutes } from './routes/incidents';
+import { adminRoutes } from './routes/admin';
 import { pool } from './db/pool';
 
 dotenv.config({ path: path.resolve(__dirname, '../../../.env') });
@@ -42,6 +43,7 @@ async function start() {
       await setupWebSockets(app);
     });
     await fastify.register(incidentRoutes);
+    await fastify.register(adminRoutes);
     
     const port = Number(process.env.BACKEND_PORT) || 3001;
     await fastify.listen({ port, host: '0.0.0.0' });

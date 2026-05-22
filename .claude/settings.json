@@ -7,7 +7,15 @@
       "PowerShell(curl.exe -s http://localhost:3001/health 2>&1)",
       "PowerShell(curl.exe -s -X POST http://localhost:3001/incidents -H \"Content-Type: application/json\" -d \"{\\\\\"description\\\\\":\\\\\"Test fire\\\\\",\\\\\"victimCount\\\\\":2,\\\\\"location\\\\\":{\\\\\"lon\\\\\":35.5,\\\\\"lat\\\\\":33.88}}\" 2>&1)",
       "PowerShell(netstat -ano)",
-      "PowerShell(Get-Process -Id 1944, 7092 | Select-Object Id, ProcessName, CommandLine 2>&1; \\(Get-CimInstance Win32_Process -Filter \"ProcessId=1944\"\\).CommandLine; \\(Get-CimInstance Win32_Process -Filter \"ProcessId=7092\"\\).CommandLine)"
+      "PowerShell(Get-Process -Id 1944, 7092 | Select-Object Id, ProcessName, CommandLine 2>&1; \\(Get-CimInstance Win32_Process -Filter \"ProcessId=1944\"\\).CommandLine; \\(Get-CimInstance Win32_Process -Filter \"ProcessId=7092\"\\).CommandLine)",
+      "PowerShell(\\(Get-CimInstance Win32_Process -Filter \"ProcessId=1944\"\\).WorkingDirectory)",
+      "PowerShell(wmic process where \"ProcessId=1944\" get WorkingDirectory, CommandLine /format:list 2>&1)",
+      "PowerShell(wmic process where \"ProcessId=1944\" get WorkingDirectory /format:list 2>&1)",
+      "PowerShell(curl.exe -sv http://localhost:3001/incidents -X POST -H \"Content-Type: application/json\" -d \"{}\" 2>&1)",
+      "PowerShell(Get-Process -Id 1944)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3001 -State Listen 2>&1)",
+      "PowerShell(\\(Get-CimInstance Win32_Process -Filter \"ProcessId=25344\"\\).CommandLine)",
+      "PowerShell(curl.exe -s -X POST http://localhost:3001/incidents -H \"Content-Type: application/json\" -d \"{\\\\\"description\\\\\":\\\\\"fire\\\\\",\\\\\"victimCount\\\\\":1,\\\\\"location\\\\\":{\\\\\"lon\\\\\":35.5,\\\\\"lat\\\\\":33.88}}\" 2>&1)"
     ]
   }
 }
